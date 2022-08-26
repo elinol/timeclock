@@ -1,3 +1,5 @@
+# Project
+for fun and work
 # Timeclock
 
 To start your Phoenix server:
