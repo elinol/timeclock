@@ -1,5 +1,6 @@
 defmodule TimeclockWeb.Router do
   use TimeclockWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -17,7 +18,8 @@ defmodule TimeclockWeb.Router do
   scope "/", TimeclockWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    # get "/", PageController, :index
+    live "/", ClockLive
   end
 
   # Other scopes may use custom stacks.

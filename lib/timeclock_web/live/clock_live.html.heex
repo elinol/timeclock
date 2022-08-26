@@ -1,0 +1,14 @@
+<main>
+    <span><p>You have <%= @title %> working!</p></span>
+    <%= if @started do%>
+        <button phx-click="stop" name="stop">Stop</button>
+    <% else %>
+        <button phx-click="start" name="start">Start</button>
+    <% end %>
+
+    <%= if @counter > 0 do %>
+        <p>... and you worked: <%= @counter %> seconds.</p>
+    <% end %>
+
+    <h2>Total time today: <%= @total_time %></h2>
+</main>
