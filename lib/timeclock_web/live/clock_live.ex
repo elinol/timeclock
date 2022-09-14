@@ -20,8 +20,7 @@ defmodule TimeclockWeb.ClockLive do
   def handle_event("start", _session, socket) do
     start_time = DateTime.utc_now
 
-    timer_ref = :timer.send_interval(1000, self(), :tick)
-
+    {:ok, timer_ref} = :timer.send_interval(1000, self(), :tick)
 
     socket =
       socket
@@ -37,9 +36,7 @@ defmodule TimeclockWeb.ClockLive do
   end
 
 
-  def handle_info(:tick, %{assigns: %{counter: counter}} = socket) do
-      {:noreply, socket |> assign(:counter, counter + 1)}
-  end
+
 
   def handle_event("stop", _session, socket) do
     stop_time = DateTime.utc_now
@@ -60,4 +57,8 @@ defmodule TimeclockWeb.ClockLive do
     {:noreply, socket}
 
   end
+
+  def handle_info(:tick, %{assigns: %{counter: counter}} = socket) do
+    {:noreply, socket |> assign(:counter, counter + 1)}
+end
 end
